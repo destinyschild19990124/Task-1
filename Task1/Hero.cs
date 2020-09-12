@@ -27,29 +27,6 @@ namespace Task1
                 return Movement.None;
             }
 
-            /*
-            if (direction == Character.Movement.Up)
-            {
-
-            }
-            else if (direction == Character.Movement.Down)
-            {
-
-            }
-            else if (direction == Character.Movement.Left)
-            {
-
-            }
-            else if (direction == Character.Movement.Right)
-            {
-
-            }
-            else
-            {
-                return Character.Movement.None;
-            }
-            */
-
         }
 
         public override string ToString()

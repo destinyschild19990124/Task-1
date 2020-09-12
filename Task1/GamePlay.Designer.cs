@@ -1,6 +1,6 @@
 ﻿namespace Task1
 {
-    partial class Form1
+    partial class GamePlay
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // GamePlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "GamePlay";
+            this.Text = "GamePlay";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GamePlay_KeyPress);
             this.ResumeLayout(false);
 
         }
@@ -44,4 +45,3 @@
         #endregion
     }
 }
-

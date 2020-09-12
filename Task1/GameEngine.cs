@@ -11,5 +11,15 @@ namespace Task1
 
         private Map map;
 
+        public GameEngine(int min_width,int max_width,int min_height,int max_height,int num_enemies)
+        {
+            map = new Map(min_width, max_width, min_height, max_height, num_enemies);
+        }
+
+        public Boolean movePlayer(Character.Movement dir)
+        {
+
+        }
+
     }
 }
