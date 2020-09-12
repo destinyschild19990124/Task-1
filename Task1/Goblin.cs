@@ -11,28 +11,49 @@ namespace Task1
 
         public Goblin(int x,int y) : base(x, y, Tile.TileType.Enemy, 1, 10) { }
 
-        public override Movement returnMove()
+        public  Movement returnMove()
         {
-            Character.Movement direction = (Character.Movement)(rnd.Next(0, 6));
+            int[] possible_moves = { 0, 1, 2, 3 };
+            Boolean move_found = false;
+            Character.Movement dir = Character.Movement.None;
 
-            if(direction == Character.Movement.Up)
-            {
 
-            }else if(direction == Character.Movement.Down)
+            while (!move_found)
             {
+                dir = (Character.Movement)possible_moves[rnd.Next(0,possible_moves.Length)];
 
-            }else if(direction == Character.Movement.Left)
-            {
+                if (this.vision[(int)dir] is EmptyTile)
+                {
+                    move_found = true;
 
-            }else if(direction == Character.Movement.Right)
-            {
+                }else if (possible_moves.Length != 1)
+                {
+                    
+                    int[] new_possible_moves = new int[possible_moves.Length - 1];
+                    int index = 0;
+
+                    for(int i = 0; i < possible_moves.Length; ++i)
+                    {
+                        if (possible_moves[i] != (int)dir)
+                        {
+                            new_possible_moves[index] = (int)dir;
+                            ++index;
+                        }
+                    }
+
+                    possible_moves = new_possible_moves;
+                }
+                else
+                {
+                    dir = Character.Movement.None;
+                    move_found = true;
+                }
 
             }
-            else
-            {
-                return Character.Movement.None;
-            }
-            
+
+
+            return dir;
+
         }
 
 

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    class Obstacle : Tile
+    class GameEngine
     {
-        public Obstacle(int x, int y) : base(x, y) { }
-        
+
+        private Map map;
+
     }
 }

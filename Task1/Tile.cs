@@ -26,6 +26,12 @@ namespace Task1
             setTileType(type);
         }
 
+        public Tile(int x, int y)
+        {
+            setX(x);
+            setY(y);
+        }
+
         public int getX()
         {
             return x;

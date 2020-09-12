@@ -11,7 +11,7 @@ namespace Task1
 
         public enum Movement
         {
-            None,Up,Down,Left,Right
+            Up,Down,Left,Right,None
         }
 
         protected int hp;
@@ -55,7 +55,7 @@ namespace Task1
             else if(direction == Movement.Right) { ++this.x; }
         }
 
-        public abstract Movement returnMove();
+        public abstract Movement returnMove(Movement direction = 0);
 
         public abstract override string ToString();
 
