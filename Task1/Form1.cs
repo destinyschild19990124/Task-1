@@ -15,6 +15,20 @@ namespace Task1
         public Form1()
         {
             InitializeComponent();
+            /*
+            Hero sample = new Hero(0, 0,10);
+            Tile[] tiles = new Tile[1];
+            tiles[0] = sample;
+
+            if(tiles[0] is Goblin)
+            {
+                Console.WriteLine("is goblin");
+            }
+            else
+            {
+                Console.WriteLine("is not goblin");
+            }
+            */
         }
 
         private void startgameButton_Click(object sender, EventArgs e)

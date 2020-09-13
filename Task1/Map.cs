@@ -76,6 +76,7 @@ namespace Task1
             }
         }
 
+
         private void updateVision()
         {
             hero.setVision(returnVision(hero.getX(), hero.getY()));
@@ -148,6 +149,8 @@ namespace Task1
                     emp.setX(emp.getX() - 1);
                     break;
             }
+
+            this.updateVision();
         }
 
         private Tile[] returnVision(int x,int y)
@@ -157,7 +160,7 @@ namespace Task1
             vision[0] = map[y - 1, x];  //North
             vision[1] = map[y + 1, x];  //South
             vision[2] = map[y, x - 1];  //West
-            vision[4] = map[y, x + 1];  //East
+            vision[3] = map[y, x + 1];  //East
 
             return vision;
 

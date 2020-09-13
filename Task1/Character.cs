@@ -62,6 +62,10 @@ namespace Task1
         public void setHp(int hp)
         {
             this.hp = hp;
+            if (hp <= 0)
+            {
+                hp = 0;
+            }
         }
 
         public int getHp()

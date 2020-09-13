@@ -32,48 +32,7 @@ namespace Task1
             this.caller = caller;
         }
 
-        private void GamePlay_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void GamePlay_KeyDown(object sender, KeyEventArgs e)
-        {
-            actionstatusLabel.Text = "";
-
-            if (e.KeyCode == Keys.Up)
-            {
-                actionStatus("move up",ge.movePlayer(Character.Movement.Up));
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                actionStatus("move down", ge.movePlayer(Character.Movement.Down));
-            }
-            else if (e.KeyCode == Keys.Left)
-            {
-                actionStatus("move left", ge.movePlayer(Character.Movement.Left));
-            }
-            else if (e.KeyCode == Keys.Right)
-            {
-                actionStatus("move right", ge.movePlayer(Character.Movement.Right));
-            }
-            else if (e.KeyCode == Keys.W)
-            {
-                actionStatus("attack up", ge.attackEnemy(Character.Movement.Up));
-            }
-            else if (e.KeyCode == Keys.S)
-            {
-                actionStatus("attack down", ge.attackEnemy(Character.Movement.Down));
-            }
-            else if (e.KeyCode == Keys.A)
-            {
-                actionStatus("attack left", ge.attackEnemy(Character.Movement.Left));
-            }
-            else if (e.KeyCode == Keys.D)
-            {
-                actionStatus("attack right", ge.attackEnemy(Character.Movement.Right));
-            }
-        }
+       
 
         private void actionStatus(String action,Boolean success)
         {
@@ -103,7 +62,7 @@ namespace Task1
             {
                 for(int j = 0; j < width; ++j)
                 {
-                    text_view += this.getRepresentation(view[i, j]) + ' ';
+                    text_view += this.getRepresentation(view[i, j]) + " ";
                 }
                 text_view += '\n';
             }
@@ -145,5 +104,45 @@ namespace Task1
         {
             caller.Dispose();
         }
+
+        private void GamePlay_KeyDown(object sender, KeyEventArgs e)
+        {
+            actionstatusLabel.Text = "";
+
+            if (e.KeyCode == Keys.W)
+            {
+                actionStatus("move up", ge.movePlayer(Character.Movement.Up));
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                actionStatus("move down", ge.movePlayer(Character.Movement.Down));
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                actionStatus("move left", ge.movePlayer(Character.Movement.Left));
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                actionStatus("move right", ge.movePlayer(Character.Movement.Right));
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                actionStatus("attack up", ge.attackEnemy(Character.Movement.Up));
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                actionStatus("attack down", ge.attackEnemy(Character.Movement.Down));
+            }
+            else if (e.KeyCode == Keys.Left)
+            {
+                actionStatus("attack left", ge.attackEnemy(Character.Movement.Left));
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                actionStatus("attack right", ge.attackEnemy(Character.Movement.Right));
+            }
+        }
     }
+
+    
 }
