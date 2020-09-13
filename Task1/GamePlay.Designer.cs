@@ -35,12 +35,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.herostatsLabel = new System.Windows.Forms.Label();
-            this.enemiesremainingLabel = new System.Windows.Forms.Label();
             this.attackingOptionsLabel = new System.Windows.Forms.Label();
+            this.herostatsLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.enemiesremainingLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,8 +94,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.attackingOptionsLabel);
             this.panel1.Controls.Add(this.enemiesremainingLabel);
+            this.panel1.Controls.Add(this.attackingOptionsLabel);
             this.panel1.Controls.Add(this.herostatsLabel);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -105,25 +105,23 @@
             this.panel1.Size = new System.Drawing.Size(402, 544);
             this.panel1.TabIndex = 5;
             // 
-            // label4
+            // attackingOptionsLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Hero Stats";
+            this.attackingOptionsLabel.AutoSize = true;
+            this.attackingOptionsLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.attackingOptionsLabel.ForeColor = System.Drawing.Color.Blue;
+            this.attackingOptionsLabel.Location = new System.Drawing.Point(12, 438);
+            this.attackingOptionsLabel.Name = "attackingOptionsLabel";
+            this.attackingOptionsLabel.Size = new System.Drawing.Size(0, 17);
+            this.attackingOptionsLabel.TabIndex = 11;
             // 
-            // label5
+            // herostatsLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 378);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Attacking Options";
+            this.herostatsLabel.AutoSize = true;
+            this.herostatsLabel.Location = new System.Drawing.Point(12, 43);
+            this.herostatsLabel.Name = "herostatsLabel";
+            this.herostatsLabel.Size = new System.Drawing.Size(0, 17);
+            this.herostatsLabel.TabIndex = 9;
             // 
             // label6
             // 
@@ -135,31 +133,35 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Enemies Remaining";
             // 
-            // herostatsLabel
+            // label5
             // 
-            this.herostatsLabel.AutoSize = true;
-            this.herostatsLabel.Location = new System.Drawing.Point(12, 43);
-            this.herostatsLabel.Name = "herostatsLabel";
-            this.herostatsLabel.Size = new System.Drawing.Size(0, 17);
-            this.herostatsLabel.TabIndex = 9;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 408);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Attacking Options";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Hero Stats";
             // 
             // enemiesremainingLabel
             // 
             this.enemiesremainingLabel.AutoSize = true;
-            this.enemiesremainingLabel.Location = new System.Drawing.Point(12, 160);
+            this.enemiesremainingLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.enemiesremainingLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.enemiesremainingLabel.Location = new System.Drawing.Point(12, 163);
             this.enemiesremainingLabel.Name = "enemiesremainingLabel";
             this.enemiesremainingLabel.Size = new System.Drawing.Size(0, 17);
-            this.enemiesremainingLabel.TabIndex = 10;
-            // 
-            // attackingOptionsLabel
-            // 
-            this.attackingOptionsLabel.AutoSize = true;
-            this.attackingOptionsLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.attackingOptionsLabel.ForeColor = System.Drawing.Color.Blue;
-            this.attackingOptionsLabel.Location = new System.Drawing.Point(12, 408);
-            this.attackingOptionsLabel.Name = "attackingOptionsLabel";
-            this.attackingOptionsLabel.Size = new System.Drawing.Size(0, 17);
-            this.attackingOptionsLabel.TabIndex = 11;
+            this.enemiesremainingLabel.TabIndex = 12;
             // 
             // GamePlay
             // 
@@ -195,7 +197,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label attackingOptionsLabel;
-        private System.Windows.Forms.Label enemiesremainingLabel;
         private System.Windows.Forms.Label herostatsLabel;
+        private System.Windows.Forms.Label enemiesremainingLabel;
     }
 }

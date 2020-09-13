@@ -42,7 +42,15 @@ namespace Task1
 
             for(int i = 0; i < map.getEnemies().Length; ++i)
             {
-                info += map.getEnemies()[i].ToString() + "\n\n";
+                if (i <= 5)
+                {
+                    info += map.getEnemies()[i].ToString() + "\n\n";
+                }
+            }
+
+            if (map.getEnemies().Length > 6)
+            {
+                info += "+" + (map.getEnemies().Length - 6) + " more enem" + ((map.getEnemies().Length - 6)>1?"ies":"y");
             }
 
             return info;
