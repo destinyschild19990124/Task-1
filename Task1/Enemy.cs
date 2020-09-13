@@ -19,7 +19,7 @@ namespace Task1
 
         public override string ToString()
         {
-            return this.GetType().Name + this.x + "," + this.y + "] (" + damage + " DMG)";
+            return this.GetType().Name +" at ["+ this.x + ", " + this.y + "]  (" + damage + " DMG)  (" + this.hp + " HP)";
         }
 
     }

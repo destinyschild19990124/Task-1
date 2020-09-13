@@ -34,14 +34,21 @@ namespace Task1
 
        
 
-        private void actionStatus(String action,Boolean success)
+        private void actionStatus(String action,Boolean success,String meta)
         {
             if (success)
             {
+                if (action.Substring(0, 6) == "attack")
+                {
+                    actionstatusLabel.ForeColor = Color.Green;
+                    actionstatusLabel.Text = "Action successful!";
+                    actionstatusLabel.Text += '\n' + meta;
+                }
                 redraw();
             }
             else
             {
+                actionstatusLabel.ForeColor = Color.Red;
                 actionstatusLabel.Text = "You cannot " + action;
             }
         }
@@ -49,8 +56,9 @@ namespace Task1
         private void redraw()
         {
             updateMap();
-            updatePlayerStats();
-            updateEnvironment();
+            updatePlayerStats(ge.getHeroStats());
+            updateEnemiesRemaining(ge.getEnemiesRemaining());
+            updateAttackingOptions(ge.getAttackingOptions());
         }
 
         private void updateMap()
@@ -62,7 +70,7 @@ namespace Task1
             {
                 for(int j = 0; j < width; ++j)
                 {
-                    text_view += this.getRepresentation(view[i, j]) + " ";
+                    text_view += this.getRepresentation(view[i, j]) + (j==(width-1)?"":" ");
                 }
                 text_view += '\n';
             }
@@ -70,14 +78,19 @@ namespace Task1
             gameviewLabel.Text = text_view;
         }
 
-        private void updatePlayerStats()
+        private void updatePlayerStats(String info)
         {
-
+            herostatsLabel.Text = info;
         }
 
-        private void updateEnvironment()
+        private void updateEnemiesRemaining(String info)
         {
+            enemiesremainingLabel.Text = info;
+        }
 
+        private void updateAttackingOptions(String info)
+        {
+            attackingOptionsLabel.Text = info;
         }
 
         private char getRepresentation(Tile type)
@@ -111,37 +124,72 @@ namespace Task1
 
             if (e.KeyCode == Keys.W)
             {
-                actionStatus("move up", ge.movePlayer(Character.Movement.Up));
+                actionStatus("move up", ge.movePlayer(Character.Movement.Up), "");
             }
             else if (e.KeyCode == Keys.S)
             {
-                actionStatus("move down", ge.movePlayer(Character.Movement.Down));
+                actionStatus("move down", ge.movePlayer(Character.Movement.Down), "");
             }
             else if (e.KeyCode == Keys.A)
             {
-                actionStatus("move left", ge.movePlayer(Character.Movement.Left));
+                actionStatus("move left", ge.movePlayer(Character.Movement.Left), "");
             }
             else if (e.KeyCode == Keys.D)
             {
-                actionStatus("move right", ge.movePlayer(Character.Movement.Right));
+                actionStatus("move right", ge.movePlayer(Character.Movement.Right), "");
+            }
+            else if (e.KeyCode == Keys.Space)
+            {
+                actionStatus("no move", ge.remainStill(), "");
             }
             else if (e.KeyCode == Keys.Up)
             {
-                actionStatus("attack up", ge.attackEnemy(Character.Movement.Up));
+                String response = ge.attackEnemy(Character.Movement.Up);
+                Boolean success = false;
+                if (response[0] == '1')
+                {
+                    success = true;
+                }
+                actionStatus("attack up",success,response.Substring(1));
             }
             else if (e.KeyCode == Keys.Down)
             {
-                actionStatus("attack down", ge.attackEnemy(Character.Movement.Down));
+                String response = ge.attackEnemy(Character.Movement.Down);
+                Boolean success = false;
+                if (response[0] == '1')
+                {
+                    success = true;
+                }
+                actionStatus("attack down", success, response.Substring(1));
             }
             else if (e.KeyCode == Keys.Left)
             {
-                actionStatus("attack left", ge.attackEnemy(Character.Movement.Left));
+                String response = ge.attackEnemy(Character.Movement.Left);
+                Boolean success = false;
+                if (response[0] == '1')
+                {
+                    success = true;
+                }
+                actionStatus("attack left", success, response.Substring(1));
             }
             else if (e.KeyCode == Keys.Right)
             {
-                actionStatus("attack right", ge.attackEnemy(Character.Movement.Right));
+                String response = ge.attackEnemy(Character.Movement.Right);
+                Boolean success = false;
+                if (response[0] == '1')
+                {
+                    success = true;
+                }
+                actionStatus("attack right", success, response.Substring(1));
+            }
+            else if(e.KeyCode == Keys.Escape)
+            {
+                caller.Show();
+                this.Dispose();
             }
         }
+
+       
     }
 
     

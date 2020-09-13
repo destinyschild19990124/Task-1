@@ -22,7 +22,15 @@ namespace Task1
             this.height = rnd.Next(min_height, max_height + 1);
 
             this.map = new Tile[height, width];
+
+            //Check that the number of enemies spawned does not exceed the limit
+            int max_num_enemies = ((width - 2) * (height - 2)) - 1;
+            if (num_enemies > max_num_enemies)
+            {
+                num_enemies = max_num_enemies;
+            }
             this.enemies = new Enemy[num_enemies];
+
             generateEmptyMap();
             this.hero = (Hero)create(Tile.TileType.Hero);
             map[hero.getY(), hero.getX()] = hero;
@@ -98,7 +106,7 @@ namespace Task1
 
                 for(int i = 0; i < enemies.Length; ++i)
                 {
-                    if (!enemies[i].isDead())
+                    if (enemies[i].isDead())
                     {
                         map[enemies[i].getY(), enemies[i].getX()] = new EmptyTile(enemies[i].getY(), enemies[i].getX());
                     }
@@ -110,6 +118,7 @@ namespace Task1
                 }
 
                 enemies = new_list;
+                updateVision();
             }
         }
 
@@ -168,6 +177,8 @@ namespace Task1
 
         private int[] getSpawnPosition()
         {
+            //NOTE TO SELF - Maybe don't use recursion next time to avoid repetition ( use a list to store visited locations )
+
             int x_position = rnd.Next(1, width);
             int y_position = rnd.Next(1, height);
 

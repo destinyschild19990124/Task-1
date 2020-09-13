@@ -31,6 +31,35 @@ namespace Task1
             return map.getHeight();
         }
 
+        public string getHeroStats()
+        {
+            return map.getHero().ToString();
+        }
+
+        public string getEnemiesRemaining()
+        {
+            string info = "";
+
+            for(int i = 0; i < map.getEnemies().Length; ++i)
+            {
+                info += map.getEnemies()[i].ToString() + "\n\n";
+            }
+
+            return info;
+        }
+
+        public string getAttackingOptions()
+        {
+            string info = "";
+
+            if(map.getHero().getVision()[0] is Enemy) { info += "[UP]  " + map.getHero().getVision()[0].ToString() + "\n\n"; }
+            if(map.getHero().getVision()[1] is Enemy) { info += "[DOWN]  " + map.getHero().getVision()[1].ToString() + "\n\n"; }
+            if(map.getHero().getVision()[2] is Enemy) { info += "[LEFT]  " + map.getHero().getVision()[2].ToString() + "\n\n"; }
+            if(map.getHero().getVision()[3] is Enemy) { info += "[RIGHT]  " + map.getHero().getVision()[3].ToString() + "\n\n"; }
+
+            return info;
+        }
+
         public Boolean movePlayer(Character.Movement dir)
         {
             if (map.getHero().returnMove(dir) != Character.Movement.None)
@@ -45,6 +74,12 @@ namespace Task1
             }
         }
 
+        public bool remainStill()
+        {
+            moveEnemies();
+            return true;
+        }
+
         private void moveEnemies()
         {
             Enemy[] enemies = map.getEnemies();
@@ -56,7 +91,7 @@ namespace Task1
             }
         }
 
-        public Boolean attackEnemy(Character.Movement dir)
+        public String attackEnemy(Character.Movement dir)
         {
             Hero h = map.getHero();
             Tile target = new EmptyTile(0,0); // Set as an empty tile for placeholding
@@ -90,11 +125,19 @@ namespace Task1
 
                 moveEnemies();
 
-                return true;
+                if (!c_target.isDead())
+                {
+                    return "1" + c_target.ToString();     //Returning 1 infront of string indicates success
+                }
+                else
+                {
+                    return "1The enemy is dead";    
+                }
+                
             }
             else
             {
-                return false;
+                return "0";                         //Returning 0 infront of string indicates failure
             }
 
             

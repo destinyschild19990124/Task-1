@@ -39,6 +39,7 @@
             this.maxlengthBox = new System.Windows.Forms.TextBox();
             this.enemiesBox = new System.Windows.Forms.TextBox();
             this.startgameButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // minwidthBox
@@ -123,7 +124,7 @@
             // 
             // startgameButton
             // 
-            this.startgameButton.Location = new System.Drawing.Point(162, 320);
+            this.startgameButton.Location = new System.Drawing.Point(147, 287);
             this.startgameButton.Name = "startgameButton";
             this.startgameButton.Size = new System.Drawing.Size(197, 71);
             this.startgameButton.TabIndex = 10;
@@ -131,11 +132,21 @@
             this.startgameButton.UseVisualStyleBackColor = true;
             this.startgameButton.Click += new System.EventHandler(this.startgameButton_Click);
             // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(263, 237);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 17);
+            this.errorLabel.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 450);
+            this.ClientSize = new System.Drawing.Size(524, 387);
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.startgameButton);
             this.Controls.Add(this.enemiesBox);
             this.Controls.Add(this.maxlengthBox);
@@ -167,6 +178,7 @@
         private System.Windows.Forms.TextBox maxlengthBox;
         private System.Windows.Forms.TextBox enemiesBox;
         private System.Windows.Forms.Button startgameButton;
+        private System.Windows.Forms.Label errorLabel;
     }
 }
 
