@@ -12,9 +12,24 @@ namespace Task1
 {
     public partial class GamePlay : Form
     {
-        public GamePlay()
+
+        private Form1 caller;
+        private GameEngine ge;
+        private int width;
+        private int height;
+
+        public GamePlay(int min_width, int max_width, int min_height, int max_height, int num_enemies)
         {
             InitializeComponent();
+            ge = new GameEngine(min_width, max_width, min_height, max_height, num_enemies);
+            width = ge.getWidth();
+            height = ge.getHeight();
+            redraw();
+        }
+
+        public void setCaller(Form1 caller)
+        {
+            this.caller = caller;
         }
 
         private void GamePlay_KeyPress(object sender, KeyPressEventArgs e)
@@ -24,22 +39,111 @@ namespace Task1
 
         private void GamePlay_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.W)
-            {
+            actionstatusLabel.Text = "";
 
-            }
-            else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
+            if (e.KeyCode == Keys.Up)
             {
-
+                actionStatus("move up",ge.movePlayer(Character.Movement.Up));
             }
-            else if (e.KeyCode == Keys.Left || e.KeyCode == Keys.A)
+            else if (e.KeyCode == Keys.Down)
             {
-
+                actionStatus("move down", ge.movePlayer(Character.Movement.Down));
             }
-            else if (e.KeyCode == Keys.Right || e.KeyCode == Keys.D)
+            else if (e.KeyCode == Keys.Left)
             {
-
+                actionStatus("move left", ge.movePlayer(Character.Movement.Left));
             }
+            else if (e.KeyCode == Keys.Right)
+            {
+                actionStatus("move right", ge.movePlayer(Character.Movement.Right));
+            }
+            else if (e.KeyCode == Keys.W)
+            {
+                actionStatus("attack up", ge.attackEnemy(Character.Movement.Up));
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                actionStatus("attack down", ge.attackEnemy(Character.Movement.Down));
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                actionStatus("attack left", ge.attackEnemy(Character.Movement.Left));
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                actionStatus("attack right", ge.attackEnemy(Character.Movement.Right));
+            }
+        }
+
+        private void actionStatus(String action,Boolean success)
+        {
+            if (success)
+            {
+                redraw();
+            }
+            else
+            {
+                actionstatusLabel.Text = "You cannot " + action;
+            }
+        }
+
+        private void redraw()
+        {
+            updateMap();
+            updatePlayerStats();
+            updateEnvironment();
+        }
+
+        private void updateMap()
+        {
+            Tile[,] view = ge.getMapView();
+            string text_view = "";
+
+            for(int i = 0; i < height; ++i)
+            {
+                for(int j = 0; j < width; ++j)
+                {
+                    text_view += this.getRepresentation(view[i, j]) + ' ';
+                }
+                text_view += '\n';
+            }
+
+            gameviewLabel.Text = text_view;
+        }
+
+        private void updatePlayerStats()
+        {
+
+        }
+
+        private void updateEnvironment()
+        {
+
+        }
+
+        private char getRepresentation(Tile type)
+        {
+            if(type is EmptyTile)
+            {
+                return '.';
+            }
+            else if(type is Hero)
+            {
+                return 'H';
+            }
+            else if (type is Goblin)
+            {
+                return 'G';
+            }
+            else
+            {
+                return 'X';
+            }
+        }
+
+        private void GamePlay_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            caller.Dispose();
         }
     }
 }

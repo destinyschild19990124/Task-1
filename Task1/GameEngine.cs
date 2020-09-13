@@ -16,9 +16,36 @@ namespace Task1
             map = new Map(min_width, max_width, min_height, max_height, num_enemies);
         }
 
+        public Tile[,] getMapView()
+        {
+            return map.getMap();
+        }
+
+        public int getWidth()
+        {
+            return map.getWidth();
+        }
+
+        public int getHeight()
+        {
+            return map.getHeight();
+        }
+
         public Boolean movePlayer(Character.Movement dir)
         {
 
+            moveEnemies();
+        }
+
+        private void moveEnemies()
+        {
+
+        }
+
+        public Boolean attackEnemy(Character.Movement dir)
+        {
+
+            moveEnemies();
         }
 
     }

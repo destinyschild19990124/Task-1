@@ -25,10 +25,12 @@ namespace Task1
             this.enemies = new Enemy[num_enemies];
             generateEmptyMap();
             this.hero = (Hero)create(Tile.TileType.Hero);
+            map[hero.getY(), hero.getX()] = hero;
 
             for (int i = 0; i < enemies.Length; ++i)
             {
                 enemies[i] = (Goblin)create(Tile.TileType.Enemy);
+                map[enemies[i].getY(),enemies[i].getX()] = enemies[i];
             }
 
             updateVision();
@@ -82,6 +84,69 @@ namespace Task1
             {
               
                 enemies[i].setVision(returnVision(enemies[i].getX(), enemies[i].getY()));
+            }
+        }
+
+        public void removeFromMap(Tile character)
+        {
+            
+            if(character.getTileType() == Tile.TileType.Enemy)
+            {
+                Enemy[] new_list = new Enemy[enemies.Length-1];
+                int index = 0;
+
+                for(int i = 0; i < enemies.Length; ++i)
+                {
+                    if (!enemies[i].isDead())
+                    {
+                        map[enemies[i].getY(), enemies[i].getX()] = new EmptyTile(enemies[i].getY(), enemies[i].getX());
+                    }
+                    else
+                    {
+                        new_list[index] = enemies[i];
+                        ++index;
+                    }
+                }
+
+                enemies = new_list;
+            }
+        }
+
+        public void updateCharaterPosition(Tile character,Character.Movement direction)
+        {
+            Character c = (Character)map[character.getY(), character.getX()];
+            EmptyTile emp;
+
+            switch (direction)
+            {
+                case Character.Movement.Up:
+                    emp = (EmptyTile)map[character.getY() - 1, character.getX()];
+                    map[character.getY() - 1, character.getX()] = c;
+                    map[character.getY(), character.getX()] = emp;
+                    c.move(Character.Movement.Up);
+                    emp.setY(emp.getY() + 1);
+                    break;
+                case Character.Movement.Down:
+                    emp = (EmptyTile)map[character.getY() + 1, character.getX()];
+                    map[character.getY() + 1, character.getX()] = c;
+                    map[character.getY(), character.getX()] = emp;
+                    c.move(Character.Movement.Down);
+                    emp.setY(emp.getY() - 1);
+                    break;
+                case Character.Movement.Left:
+                    emp = (EmptyTile)map[character.getY(), character.getX()-1];
+                    map[character.getY(), character.getX()-1] = c;
+                    map[character.getY(), character.getX()] = emp;
+                    c.move(Character.Movement.Left);
+                    emp.setX(emp.getX() + 1);
+                    break;
+                case Character.Movement.Right:
+                    emp = (EmptyTile)map[character.getY(), character.getX()+1];
+                    map[character.getY(), character.getX()+1] = c;
+                    map[character.getY(), character.getX()] = emp;
+                    c.move(Character.Movement.Right);
+                    emp.setX(emp.getX() - 1);
+                    break;
             }
         }
 
